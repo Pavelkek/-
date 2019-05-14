@@ -7,7 +7,7 @@ for(let i = 0; i < 10; i++) {
 
 // 2. Преобразовать массив в строку и обратно в массив
 var strFromArr = "";
-strFromArr += arrjoin(" ");
+strFromArr += arr.join(" ");
 console.log(strFromArr);
 var arrNew = strFromArr.split(' ');
 for(let i = 0; i < arrNew.length; i++) {
