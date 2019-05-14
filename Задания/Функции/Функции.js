@@ -194,4 +194,296 @@ function typeOfArgument2 (arg) {
     console.log(typeof arg);
 }
 
+// Задание 10
+function identityMatr (n) {
+    var matr = [];
+    for (let i = 0; i < n; i++) {
+        matr.push([]);
+        for (let j = 0; j < n; j++) {
+            if (i === j) {
+                matr[i][j] = 1;
+            } else {
+                matr[i][j] = 0;
+            }
+        }
+    }
+    return matr;
+}
 
+//Задание 11 (не знаю на сколько корректно такое решение)
+function secondValue (arr) {
+    return [arr[1], arr.length-1];
+}
+
+//Задание 12
+function perfect (num) {
+    var sum = 0;
+    for (let i = 1; i <= num; i++) {
+        if (num % i === 0) {
+            sum += i;
+        }
+    }
+    if (sum/2 === num) {
+        return "This number is perfect";
+    } else {
+        return "This number is not perfect";
+    }
+}
+
+//Задание 13
+function factors (num) {
+    var arrFactors = [];
+    var variable = num;
+    while (variable !== 1) {
+        for (let i = 2; i < 20; i++) {
+            if (variable % i === 0) {
+                for (let j = 2; j < i; j++) {
+                    if (i % j !== 0) {
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
+                variable /= i;
+                arrFactors.push(i);
+                break;
+            }
+        }
+    }
+    return arrFactors;
+} 
+//factors(525);
+
+// Задание 14
+function amountToCoins (sum,coins) {
+    var resoultArrCoins = [];
+    var resoult = 0;
+    for (let i = 0; i < coins.length; i++) {
+        while (resoult <= sum - coins[i]) {
+            resoult += coins[i];
+            resoultArrCoins.push(coins[i]);
+        }
+    }
+    return resoultArrCoins;
+}
+
+// Задание 15
+function exponent (b, n) {
+    var resoult = b;
+    var exp = n;
+    if (exp !== 0){
+        for (let i = 1; i < exp; i++) {
+            resoult *= b;
+        }
+    } else {
+        resoult = 1;
+    }
+    return resoult;
+}
+
+// Задание 16
+function unique (str) {
+    var resoult = '';
+    for (let i = 0; i < str.length; i++) {
+        if (resoult.indexOf(str[i]) === -1) {
+            resoult += str[i];
+        }
+    }
+    return resoult;
+}
+
+// Задание 17
+function letterCounter (str) {
+    var matr = [[],[]];
+    for (let i = 0; i < str.length; i++) {
+        if (matr[0].indexOf(str[i]) === -1) {
+            matr[0].push(str[i]);
+            matr[1].push(1);
+        } else {
+            matr[1][matr[0].indexOf(str[i])]++;
+        }
+    }
+    return matr;
+}
+
+// Задание 18
+function binariSearch (arr, num) {
+    var middle = arr.length/2;
+    var left = -1;
+    var right = arr.length;
+    while (left < right - 1) {
+        middle = (left + right)/2;
+        if (arr[middle] < num) {
+            left = middle;
+        } else {
+            right = middle;
+        }
+    }
+    return right;    
+}
+
+// Задание 19
+function largerElemens (arr, num) {
+    var result = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > num) {
+            result.push(arr[i]);
+        }
+    }
+    return result;
+} 
+
+// Задание 20
+function stringLength () {
+    var str = '';
+    var lengthString = Math.round((Math.random() * 9) + 1);
+    for (let i = 0; i < lengthString; i++) {
+        str += "B";
+    }
+    return str;
+}
+
+// Задание 21
+function fixedLengthArr (arr, num) {
+    var resultArr = [];
+    for (let i = 0; i < arr.length-1; i++) {
+        resultArr.push([]);
+        resultArr[i].push(arr[i]);
+        resultArr[i].push(arr[i+1])
+    }
+    resultArr.push([]);
+    resultArr[resultArr.length - 1].push(arr[0]);
+    resultArr[resultArr.length - 1].push(arr[arr.length-1]);
+    return resultArr;
+}
+// Задание 22
+function counterLetter (str, letter) {
+    var counter = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === letter) {
+            counter++;
+        }
+    }
+    return counter;
+}
+
+// Задание 23
+function firstNotRepeated (str) {
+    var resoult = "";
+    for (let i = 0; i < str.length; i++) {
+        for (let j = 0; j < str.length; j++) {
+            if ((str[i] !== str[j] || i === j)) {
+                if (j === str.length-1) {
+                    resoult = str[i];
+                }
+                continue;
+            } else { 
+                break;
+            }
+        }
+        if (resoult !== '') {
+            break;
+        }
+    }
+    return resoult;
+}
+
+// Задание 24
+function bubbleSort (arr) {
+    var resoultArr = arr;
+    for (let i = 0; i < resoultArr.length; i++) {
+        for (let j = 0; j < resoultArr.length; j ++) {
+            if (resoultArr[j] < resoultArr[j+1]) {
+                var val = resoultArr[j];
+                resoultArr[j] = resoultArr[j+1];
+                resoultArr[j+1] = val;
+            }
+        }
+    }
+    return resoultArr;
+}
+
+// Задание 25
+function longestCountryName (arr) {
+    var maxLength = 0;
+    var maxLengthIndex = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].length > maxLength) {
+            maxLength = arr[i].length;
+            maxLengthIndex = i;
+        }
+    }
+    return arr[maxLengthIndex];
+}
+
+// Задание 26
+function longestWithoutRepeating (str) {
+    var arr = str.split(" ");
+    var stop = 0;
+    var resoultArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            if (arr[i][j] !== arr[i][j+1]) {
+                continue;
+            } else {
+                stop = 1;
+                break;
+            }
+        }
+        if (stop === 1) {
+            stop = 0;
+            continue;
+        }
+        resoultArr.push(arr[i]);
+    }
+    var maxLength = 0;
+    var maxLengthIndex = 0;
+    for (let i = 0; i < resoultArr.length; i++) {
+        if (resoultArr[i].length > maxLength) {
+            maxLength = resoultArr[i].length;
+            maxLengthIndex = i;
+        }
+    }
+    return resoultArr[maxLengthIndex];
+}
+
+// Задание 27
+function longestPalindrome (str) {
+    var strReverse = '';
+    var arr = str.split(" ");
+    var palindromeArr = [];
+    for (let j = 0; j < arr.length; j++) {
+        for (let i = arr[j].length - 1; i >= 0; i--) {
+            strReverse += arr[j][i]; 
+        }
+        console.log(strReverse);
+        if (arr[j] === strReverse) {
+            palindromeArr.push(arr[j]);
+        } else {
+            strReverse = '';
+            continue;
+        }
+        strReverse = '';
+    }
+    var maxLength = 0;
+    var maxLengthIndex = 0;
+    for (let i = 0; i < palindromeArr.length; i++) {
+        if (palindromeArr[i].length > maxLength) {
+            maxLength = palindromeArr[i].length;
+            maxLengthIndex = i;
+        }
+    }
+    return palindromeArr[maxLengthIndex];
+}
+
+// Задание 28 (немного не понял суть задания. передавал функцию addition все работает,
+//              но мне кажется, задание было не в этом)
+function passFunction (func) {
+    var a = func;
+    a(4,5);
+}
+
+// Задание 29
+function self () {
+    return self.name;
+}
