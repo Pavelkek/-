@@ -30,5 +30,5 @@ switch(a) {
         console.log(5);
         break;
     default:
-        console,log("value does not exist");
+        console.log("value does not exist");
 }
