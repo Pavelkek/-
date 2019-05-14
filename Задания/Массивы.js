@@ -25,3 +25,24 @@ for(let i = 0; i < arr.length; i++) {
     arr[i] = !!arr[i];
     console.log(arr[i]);
 }
+
+// 5. Пример с sort()  и filter()
+var arrSort = [ 2, {}, 5, "aaaa", 11111, 8, 12, null , "bbb"];
+function growth (a, b) {
+
+    if (a > b) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+arrSort.sort(growth);
+function descending (a ,b) {
+    if (a < b) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+arrSort.sort (descending);
+var result = arrSort.filter(f => (f+'').length >= 3 && typeof f !== "object");
