@@ -3,10 +3,10 @@ function division (a, b) {
     try {
         a/b;
         if (b === 0) {
-            throw new mathError();
+            throw new Error("На ноль делить нельзя");
         }
     } catch (err) {
-        console.log("На ноль делить нельзя");
+        console.log(err.message);
     }
 }
 division(1, 0);
